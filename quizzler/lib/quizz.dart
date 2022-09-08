@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizzler/question.dart';
+import 'package:quizzler/quizz_brain.dart';
+
+QuizzBrain quizzBrain = QuizzBrain();
 
 class QuizzPage extends StatefulWidget {
   const QuizzPage({super.key});
@@ -12,15 +14,6 @@ class _QuizzPageState extends State<QuizzPage> {
   List<Icon> scoreKeeper = [];
 
   int questionNumber = 0;
-  List<Question> questionBank = [
-    Question(text: "Apolo 11 landed on the moon in 1970", answer: false),
-    Question(text: "The square root of 114 is 12", answer: true),
-    Question(
-        text: "Elephants have the best memory in the animal kingdom",
-        answer: false),
-    Question(text: "Brazil has 26 states", answer: true),
-    Question(text: "The chemical composition of water is H20", answer: true)
-  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -34,7 +27,7 @@ class _QuizzPageState extends State<QuizzPage> {
             padding: const EdgeInsets.all(10.0),
             child: Center(
                 child: Text(
-              questionBank[questionNumber].questionText,
+              quizzBrain.questionBank[questionNumber].questionText,
               style: const TextStyle(color: Colors.white, fontSize: 20.0),
               textAlign: TextAlign.center,
             )),
@@ -48,7 +41,7 @@ class _QuizzPageState extends State<QuizzPage> {
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green)),
               onPressed: (() {
-                bool correctAnswer = questionBank[questionNumber]
+                bool correctAnswer = quizzBrain.questionBank[questionNumber]
                     .questionAnswer; //GET THE ANSWER
                 setState(() {
                   //ADD SCORE KEEPER
@@ -81,7 +74,7 @@ class _QuizzPageState extends State<QuizzPage> {
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.red)),
               onPressed: (() {
-                bool correctAnswer = questionBank[questionNumber]
+                bool correctAnswer = quizzBrain.questionBank[questionNumber]
                     .questionAnswer; //GET THE ANSWER
                 setState(() {
                   //ADD SCORE KEEPER
