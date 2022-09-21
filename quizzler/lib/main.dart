@@ -18,9 +18,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Center(
+          child: Text("Quizzler"),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       backgroundColor: Colors.black,
-      body: QuizzPage(),
+      body: const QuizzPage(),
     );
   }
 }
